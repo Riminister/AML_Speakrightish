@@ -1,0 +1,14 @@
+data/raw/
+data/processed/
+outputs/
+models/
+__pycache__/
+*.py[cod]
+*.pkl
+*.joblib
+.venv/
+venv/
+.python-version
+.DS_Store
+Thumbs.db
+
