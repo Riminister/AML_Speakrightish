@@ -1,7 +1,4 @@
-data/raw/
-data/processed/
-outputs/
-models/
+datasets/
 __pycache__/
 *.py[cod]
 *.pkl

@@ -4,7 +4,7 @@ A small audio machine learning project for experimenting with basic preprocessin
 
 The current implementation focuses on:
 - **Preprocessing**: simple, hand-crafted audio features (zero-crossing rate, spectral centroid, spectral bandwidth).
-- **Pipeline**: turning a directory of audio files plus a labels CSV into standardized train/validation/test splits.
+- **Pipeline**: reading class folders directly, auto-generating labels, and creating standardized train/validation/test splits.
 - **Models**: a placeholder for future training and evaluation code.
 
 ---
@@ -39,20 +39,15 @@ The current implementation focuses on:
 
 By default, the pipeline expects the following layout relative to the project root:
 
-- `data/audio/` – directory containing your audio files (e.g. `example.wav`).
-- `data/labels.csv` – a CSV file with at least:
-  - `filename`: the name of the audio file (e.g. `example.wav`)
-  - `label`: the target label for that file (string or integer)
+- `datasets/Main Phase - RA Mix, Good Transitions/` – contains `good_transition_*.wav`
+- `datasets/Main Phase - RA Mix, Bad Transitions/` – contains `bad_transition_*.wav`
 
-Example `labels.csv`:
+Labels are inferred automatically from folder names:
 
-```csv
-filename,label
-sample_001.wav,0
-sample_002.wav,1
-```
+- Files in **Good Transitions** are labeled `1`
+- Files in **Bad Transitions** are labeled `0`
 
-You can change these paths by editing `AUDIO_DIR` and `LABELS_CSV` in `src/pipeline.py`.
+You can change the root path by editing `DATASETS_ROOT` in `src/pipeline.py`.
 
 ---
 
@@ -66,7 +61,8 @@ python -m src.pipeline
 
 This will:
 
-- Load the labels CSV and audio files.
+- Load `.wav` files from the two class folders.
+- Auto-generate binary labels (`good=1`, `bad=0`).
 - Extract three simple features per file:
   - zero-crossing rate
   - spectral centroid
