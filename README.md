@@ -26,6 +26,17 @@ The current implementation focuses on:
    python -m venv .venv
    .venv\Scripts\activate  # on Windows
    ```
+   
+   *ENVIRMONMENT NEEDED FOR DATASET_FORMAT*
+   ## Environment Setup
+
+To create a Conda environment for this project, follow these steps:
+
+1. Install Miniconda or Anaconda from the official Conda website.
+2. Create a new environment using the following command:
+conda create --name dataset_format_env python=3.12
+conda activate dataset_format-env
+conda install -c conda-forge pydub ffmpeg
 
 2. **Install dependencies**:
 
@@ -48,6 +59,8 @@ Labels are inferred automatically from folder names:
 - Files in **Bad Transitions** are labeled `0`
 
 You can change the root path by editing `DATASETS_ROOT` in `src/pipeline.py`.
+
+test 12122121q
 
 ---
 
